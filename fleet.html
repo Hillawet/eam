@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse boats, machinery, accessories and accommodation available from Croco Plant. Add your choices to a rental request.">
+  <meta name="theme-color" content="#153a2c">
+  <title>Full Fleet | Croco Plant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catalogue.css">
+  <script src="catalogue.js" defer></script>
+</head>
+<body class="fleet-page">
+  <header class="site-header">
+    <div class="header-main">
+      <a class="brand" href="index.html" aria-label="Croco Plant home">
+        <img src="cpf-logo-transparent.png" alt="Croco Plant logo">
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-button" id="open-cart" type="button" aria-controls="cart-panel" aria-expanded="false">
+          Request list <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="catalogue-section fleet-catalogue" id="catalogue">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow eyebrow-dark">EXPLORE CROCO PLANT</p>
+          <h1>Browse the full fleet.</h1>
+          <p class="section-intro">Choose from boats, machinery, accessories, accommodation and more. Add the assets you are interested in to your request list, and our team will confirm availability and pricing.</p>
+        </div>
+        <span class="catalogue-count" id="catalogue-count" aria-live="polite"></span>
+      </div>
+
+      <form class="filters" id="filter-form">
+        <label class="search-field">
+          <span class="sr-only">Search catalogue</span>
+          <span aria-hidden="true">⌕</span>
+          <input type="search" id="search-input" placeholder="Search boats, machinery, accessories or accommodation" autocomplete="off">
+        </label>
+        <label>
+          <span class="sr-only">Category</span>
+          <select id="category-filter"><option value="">All categories</option></select>
+        </label>
+        <label>
+          <span class="sr-only">Location</span>
+          <select id="location-filter"><option value="">All locations</option></select>
+        </label>
+        <label>
+          <span class="filter-label">From</span>
+          <input id="availability-start" type="date" aria-label="Rental start date">
+        </label>
+        <label>
+          <span class="filter-label">To</span>
+          <input id="availability-end" type="date" aria-label="Rental end date">
+        </label>
+        <button class="clear-filters" id="clear-filters" type="button">Clear</button>
+      </form>
+      <p class="filter-message" id="filter-message" role="status"></p>
+
+      <div class="catalogue-grid" id="catalogue-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span class="empty-mark" aria-hidden="true">⌕</span>
+        <h3>No matching rentals</h3>
+        <p>Try a different search or clear some filters.</p>
+      </div>
+      <div class="load-error" id="load-error" hidden role="alert"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-service-line" aria-label="Rental services">
+      <span>MARINE &amp; BOATS</span>
+      <span>VEHICLES</span>
+      <span>PLANT &amp; EQUIPMENT</span>
+      <span>ASSET SUPPORT</span>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="index.html" aria-label="Croco Plant home">
+          <img src="cpf-logo-white.png" alt="Croco Plant logo">
+        </a>
+        <p>Reliable rentals and practical asset support for work, travel and adventure around Lake Kariba and beyond.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#catalogue">Boat &amp; marine rentals</a></li>
+          <li><a href="#catalogue">Vehicle hire</a></li>
+          <li><a href="#catalogue">Plant &amp; equipment</a></li>
+          <li><a href="about.html">Asset management</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="#catalogue">Rental catalogue</a></li>
+          <li><a href="index.html#how-it-works">How it works</a></li>
+          <li><a href="contact.html">Get in touch</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul>
+          <li>Caribbean Bay, Lake Kariba</li>
+          <li><a href="tel:+260777275685">+260 77 727 5685</a></li>
+          <li><a href="mailto:info@crocoplant.co.zw">info@crocoplant.co.zw</a></li>
+          <li>Mon–Sat · 07:00 – 18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-signoff">READY FOR THE WORK. MADE FOR THE JOURNEY.</div>
+    <div class="footer-bottom">
+      <span>© <span id="current-year"></span> Croco Plant. All rights reserved.</span>
+      <span>Asset management · rentals · support</span>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="cart-panel" id="cart-panel" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="cart-heading">
+      <div><p class="eyebrow eyebrow-dark">YOUR SELECTION</p><h2 id="cart-title">Request list</h2></div>
+      <button class="icon-button" id="close-cart" type="button" aria-label="Close request list">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span aria-hidden="true">▱</span><p>Your request list is empty.</p><a href="#catalogue" id="browse-from-cart">Browse the catalogue</a></div>
+    <div class="cart-footer">
+      <p>Prices and availability are confirmed by our team after review.</p>
+      <button class="button button-green button-full" id="continue-request" type="button" disabled>Continue to request <span aria-hidden="true">→</span></button>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="details-backdrop" hidden></div>
+  <section class="details-modal" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="details-title" aria-hidden="true">
+    <button class="icon-button modal-close" type="button" data-close-details aria-label="Close item details">×</button>
+    <div class="details-content" id="details-content"></div>
+  </section>
+
+  <div class="modal-backdrop" id="request-backdrop" hidden></div>
+  <section class="request-modal" id="request-modal" role="dialog" aria-modal="true" aria-labelledby="request-title" aria-hidden="true">
+    <button class="icon-button modal-close" type="button" data-close-request aria-label="Close rental request">×</button>
+    <div class="request-heading">
+      <p class="eyebrow eyebrow-dark">ALMOST THERE</p>
+      <h2 id="request-title">Send your rental request.</h2>
+      <p>Share a few details and our team will be in touch to confirm availability and pricing.</p>
+    </div>
+    <form id="request-form">
+      <div class="request-summary" id="request-summary"></div>
+      <div class="form-grid">
+        <label>Full name<input name="name" type="text" maxlength="150" autocomplete="name" required></label>
+        <label>Email address<input name="email" type="email" maxlength="190" autocomplete="email" required></label>
+        <label>Phone number<input name="phone" type="tel" maxlength="30" autocomplete="tel" required></label>
+        <label>Start date<input name="start_date" id="request-start" type="date" required></label>
+        <label>End date<input name="end_date" id="request-end" type="date" required></label>
+      </div>
+      <p class="duration-summary" id="duration-summary" aria-live="polite">Choose dates to see the rental duration.</p>
+      <label class="requirements-label">Additional requirements <span>Optional</span><textarea name="requirements" rows="3" maxlength="2000" placeholder="Tell us about delivery, intended use or anything else we should know."></textarea></label>
+      <p class="request-message" id="request-message" role="status"></p>
+      <button class="button button-green button-full" id="submit-request" type="submit">Send rental request <span aria-hidden="true">→</span></button>
+      <p class="privacy-note">Submitting a request does not confirm a booking or require payment.</p>
+    </form>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

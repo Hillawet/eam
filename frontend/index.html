@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse equipment, boats, vehicles and more available for hire from Croco Plant.">
+  <meta name="theme-color" content="#153a2c">
+  <title>Rentals | Croco Plant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catalogue.css">
+  <script src="catalogue.js" defer></script>
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <div class="header-main">
+      <a class="brand" href="#home" aria-label="Croco Plant home">
+        <img src="cpf-logo-white.png" alt="Croco Plant logo">
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="fleet.html">Explore rentals</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-button" id="open-cart" type="button" aria-controls="cart-panel" aria-expanded="false">
+          Request list <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-copy">
+        
+        <h1>Find the Right <br><em>Gear</em> for What's Next.</h1>
+        <p class="hero-description">From lake adventures to work on the ground, find the boats, vehicles and equipment you need—backed by local knowledge and practical support.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#catalogue">Explore the catalogue <span aria-hidden="true">↓</span></a>
+          <a class="button button-gold" href="/Users/mac/Desktop/bit23222182/4.1/System implementation/CrocoPlant-main/login.html">Staff Log In</a>
+        </div>
+        
+      </div>
+       
+
+      
+
+      </section>
+
+    <section class="feature-strip" aria-label="Key service highlights">
+      <article>
+        <span>01</span>
+        <div>
+          <h3>Fleet & equipment</h3>
+          <p>Reliable vehicles, boats and machinery for daily operations and special projects.</p>
+        </div>
+      </article>
+      <article>
+        <span>02</span>
+        <div>
+          <h3>Flexible rentals</h3>
+          <p>Short-term or seasonal hires designed around your project timeline and location.</p>
+        </div>
+      </article>
+      <article>
+        <span>03</span>
+        <div>
+          <h3>Asset support</h3>
+          <p>Operational guidance, availability checks and coordinated handover from our team.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="trust-strip" aria-label="Croco Plant service highlights">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 4.5 7h11l3 4.5 2 1.5v5h-2.2a2.3 2.3 0 0 1-4.6 0H9.3a2.3 2.3 0 0 1-4.6 0H3zM4.5 11.5h13M7 18a.8.8 0 1 0 0 .1M16 18a.8.8 0 1 0 0 .1"/></svg>
+        <strong>2002</strong>
+        <span class="trust-label">Trusted since</span>
+        <span class="trust-note"> </span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"/></svg>
+        <strong>4.4★</strong>
+        <span class="trust-label">Customer rating</span>
+        <span class="trust-note"></span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="m9 12-1.5 9 4.5-2.7 4.5 2.7L15 12"/></svg>
+        <strong>6+</strong>
+        <span class="trust-label">Service highlights</span>
+        <span class="trust-note"></span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3-2"/></svg>
+        <strong>400km+</strong>
+        <span class="trust-label">Service coverage</span>
+        <span class="trust-note"></span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 8.5 8.5 0 0 1-3.5-.8L4 20l1.3-3.5A8 8 0 1 1 20 11.5Z"/></svg>
+        <strong>24/7</strong>
+        <span class="trust-label">Customer support</span>
+        <span class="trust-note"></span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v5c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+        <strong>100%</strong>
+        <span class="trust-label">Rental support</span>
+        <span class="trust-note"></span>
+      </div>
+    </section>
+
+    <section class="who-section" id="about">
+      <div class="who-copy">
+        <p class="eyebrow eyebrow-dark">OUR STORY ON THE WATER</p>
+        <h2>Who we are</h2>
+        <div class="who-introduction">
+          <p>The Crocoplant Farm is located in Caribbean Bay, Kariba, Zimbabwe. Mr Thando Mhlathuzi opened as a boat rental company in 2002 and later became Asset Rental Company. It has grown to become one of the biggest boat rental and accommodation providers in Kariba.</p>
+          <p>The company has different asset-rental sections. The Luxury Boats Section offers luxury boat rentals, Car Rental, Heavy Machinery with a team of four employees serving about ninety (90) customers per week. The Fishing Boats Section offers fishing boat rentals and serves more than two hundred (200) customers per week.</p>
+          <p>What began as two modest vessels at Harbor Bay Marina has grown into one of the region’s most respected and beloved charter operations.</p>
+          <p>Our name comes from our roots in big game fishing — a tradition that still beats at the heart of everything we do. Today, alongside our world-class fishing charters, we offer an expansive range of luxury cruises, private events, corporate charters, and coastal adventures.</p>
+          <p>Every boat we operate, every crew member we hire, and every charter we run reflects our founding belief: that time on the water should be extraordinary.</p>
+        </div>
+
+        <div class="identity-grid" aria-label="Our identity, vision, mission and values">
+          <article class="identity-card identity-card-featured">
+            <span class="identity-icon" aria-hidden="true">◎</span>
+            <h3>Our identity</h3>
+            <p>We are a big asset-rental and charter team shaped by local roots, time on the water, and a passion for memorable experiences.</p>
+          </article>
+          <article class="identity-card">
+            <span class="identity-icon" aria-hidden="true">◉</span>
+            <h3>Our vision</h3>
+            <p>To make every journey on the water welcoming, dependable, and extraordinary.</p>
+          </article>
+          <article class="identity-card">
+            <span class="identity-icon" aria-hidden="true">✦</span>
+            <h3>Our mission</h3>
+            <p>To connect guests with the right boat, crew, and experience for their time on the lake.</p>
+          </article>
+          <article class="identity-card">
+            <span class="identity-icon" aria-hidden="true">◇</span>
+            <h3>Our values</h3>
+            <div class="value-tags">
+              <span>Hospitality</span><span>Safety</span><span>Integrity</span><span>Adventure</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="who-gallery" aria-label="Temporary boat and fishing photographs">
+        <img class="who-image who-image-main" src="22%20Key%20West_1.jpg.webp" alt="Temporary image: boat on the water">
+        <img class="who-image who-image-top" src="fishing-concentration.jpg.webp" alt="Temporary image: fishing on the lake">
+        <img class="who-image who-image-bottom" src="home-hero.jpg" alt="Temporary image: Croco Plant boat">
+      </div>
+    </section>
+
+    <section class="catalogue-section" id="catalogue">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow eyebrow-dark">THE RENTAL CATALOGUE</p>
+          <h2>Equipment for every kind of work.</h2>
+          <p class="section-intro">Browse what’s available, compare the details and build a request list. Our team will confirm availability and final pricing.</p>
+        </div>
+        <span class="catalogue-count" id="catalogue-count" aria-live="polite"></span>
+      </div>
+
+      <form class="filters" id="filter-form">
+        <label class="search-field">
+          <span class="sr-only">Search catalogue</span>
+          <span aria-hidden="true">⌕</span>
+          <input type="search" id="search-input" placeholder="Search equipment, category or location" autocomplete="off">
+        </label>
+        <label>
+          <span class="sr-only">Category</span>
+          <select id="category-filter"><option value="">All categories</option></select>
+        </label>
+        <label>
+          <span class="sr-only">Location</span>
+          <select id="location-filter"><option value="">All locations</option></select>
+        </label>
+        <label>
+          <span class="filter-label">From</span>
+          <input id="availability-start" type="date" aria-label="Rental start date">
+        </label>
+        <label>
+          <span class="filter-label">To</span>
+          <input id="availability-end" type="date" aria-label="Rental end date">
+        </label>
+        <button class="clear-filters" id="clear-filters" type="button">Clear</button>
+      </form>
+      <p class="filter-message" id="filter-message" role="status"></p>
+
+      <div class="catalogue-grid" id="catalogue-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span class="empty-mark" aria-hidden="true">⌕</span>
+        <h3>No matching rentals</h3>
+        <p>Try a different search or clear some filters.</p>
+      </div>
+      <div class="load-error" id="load-error" hidden role="alert"></div>
+      <div class="fleet-showcase">
+        <div class="fleet-showcase-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark">MADE FOR THE MOMENT</p>
+            <h3>A glimpse of what’s waiting.</h3>
+          </div>
+          </div>
+        <div class="fleet-showcase-grid">
+          <a class="fleet-showcase-card" href="fleet.html" aria-label="Explore boat rentals in the full fleet">
+            <img src="50-fly-launch-og.jpg" alt="Luxury motor boat cruising on the water" loading="lazy">
+            <span class="fleet-showcase-index">01 / ON THE WATER</span>
+            <span class="fleet-showcase-caption"><strong>Boat charters</strong><span>Find your time on the lake <b aria-hidden="true">↗</b></span></span>
+          </a>
+          <a class="fleet-showcase-card" href="fleet.html" aria-label="Explore fishing boats in the full fleet">
+            <img src="fishing-concentration.jpg.webp" alt="Anglers enjoying a fishing trip by boat" loading="lazy">
+            <span class="fleet-showcase-index">02 / CAST A LINE</span>
+            <span class="fleet-showcase-caption"><strong>Fishing Accessories</strong><span>Make a day of the water <b aria-hidden="true">↗</b></span></span>
+          </a>
+          <a class="fleet-showcase-card" href="fleet.html" aria-label="Explore accommodation in the full fleet">
+            <img src="bay.jpg" alt="Lakeside accommodation and pool" loading="lazy">
+            <span class="fleet-showcase-index">03 / STAY AWHILE</span>
+            <span class="fleet-showcase-caption"><strong>Lodge &amp; stays</strong><span>Make room for a getaway <b aria-hidden="true">↗</b></span></span>
+          </a>
+        </div>
+      </div>
+      <div class="catalogue-full-cta">
+        <p>Looking for something specific? Explore all boats, machinery, accessories and accommodation options.</p>
+        <a class="button button-green" href="fleet.html">View full fleet <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="how-heading">
+        <p class="eyebrow">SIMPLE BY DESIGN</p>
+        <h2>Request what you need.<br><em>We’ll take it from there.</em></h2>
+      </div>
+      <div class="steps">
+        <article class="step"><span>01</span><h3>Browse</h3><p>Explore the catalogue and check availability for your preferred dates.</p></article>
+        <article class="step"><span>02</span><h3>Build your list</h3><p>Add the equipment, vehicles or boats you want to hire.</p></article>
+        <article class="step"><span>03</span><h3>Send a request</h3><p>Share your contact details and requirements. No payment is taken online.</p></article>
+        <article class="step"><span>04</span><h3>Get confirmation</h3><p>Croco Plant will review your request and contact you to confirm the details.</p></article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="section-heading contact-heading">
+        <div>
+          <p class="eyebrow eyebrow-dark">CONTACT US</p>
+          <h2>Tell us what you need.</h2>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Speak with our team</h3>
+          <div class="contact-item">
+            <strong>Office</strong>
+            <span>Caribbean Bay, Lake Kariba, Zimbabwe</span>
+          </div>
+          <div class="contact-item">
+            <strong>Call</strong>
+            <span>+260 77 727 5685</span>
+          </div>
+          <div class="contact-item">
+            <strong>Email</strong>
+            <span>info@crocoplant.co.zw</span>
+          </div>
+          <div class="contact-item">
+            <strong>Hours</strong>
+            <span>Mon – Sat · 07:00 – 18:00</span>
+          </div>
+        </div>
+
+        <form class="enquiry-form">
+          <div class="form-row">
+            <label>
+              Full name
+              <input name="name" type="text" placeholder="Your name" autocomplete="name" maxlength="150" required>
+            </label>
+            <label>
+              Email address
+              <input name="email" type="email" placeholder="hillawet@ideasgo.com" autocomplete="email" maxlength="190" required>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              Company / organisation
+              <input name="company" type="text" placeholder="Organisation name" autocomplete="organization" maxlength="150">
+            </label>
+            <label>
+              Phone number
+              <input name="phone" type="tel" placeholder="+ ..." autocomplete="tel" maxlength="30">
+            </label>
+          </div>
+          <label>
+            How can we help?
+            <textarea name="message" rows="5" maxlength="2000" placeholder="Tell us about the asset, dates, location and quantity you need." required></textarea>
+          </label>
+          <button type="submit" class="button button-gold button-full">Send enquiry</button>
+          <p class="form-feedback" id="enquiry-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-service-line" aria-label="Rental services">
+      <span>MARINE &amp; BOATS</span>
+      <span>VEHICLES</span>
+      <span>PLANT &amp; EQUIPMENT</span>
+      <span>ASSET SUPPORT</span>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-footer" href="#home" aria-label="Croco Plant home">
+          <img src="cpf-logo-white.png" alt="Croco Plant logo">
+        </a>
+        <p>Reliable rentals and practical asset support for work, travel and adventure around Lake Kariba and beyond.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="fleet.html">Boat &amp; marine rentals</a></li>
+          <li><a href="fleet.html">Vehicle hire</a></li>
+          <li><a href="fleet.html">Plant &amp; equipment</a></li>
+          <li><a href="about.html">Asset management</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="fleet.html">Rental catalogue</a></li>
+          <li><a href="index.html#how-it-works">How it works</a></li>
+          <li><a href="contact.html">Get in touch</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul>
+          <li>Caribbean Bay, Lake Kariba</li>
+          <li><a href="tel:+260777275685">+260 77 727 5685</a></li>
+          <li><a href="mailto:info@crocoplant.co.zw">info@crocoplant.co.zw</a></li>
+          <li>Mon–Sat · 07:00 – 18:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-signoff">READY FOR THE WORK. MADE FOR THE JOURNEY.</div>
+    <div class="footer-bottom">
+      <span>© <span id="current-year"></span> Croco Plant. All rights reserved.</span>
+      <span>Asset management · rentals · support</span>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="cart-panel" id="cart-panel" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="cart-heading">
+      <div><p class="eyebrow eyebrow-dark">YOUR SELECTION</p><h2 id="cart-title">Request list</h2></div>
+      <button class="icon-button" id="close-cart" type="button" aria-label="Close request list">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span aria-hidden="true">▱</span><p>Your request list is empty.</p><a href="#catalogue" id="browse-from-cart">Browse the catalogue</a></div>
+    <div class="cart-footer">
+      <p>Prices and availability are confirmed by our team after review.</p>
+      <button class="button button-green button-full" id="continue-request" type="button" disabled>Continue to request <span aria-hidden="true">→</span></button>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="details-backdrop" hidden></div>
+  <section class="details-modal" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="details-title" aria-hidden="true">
+    <button class="icon-button modal-close" type="button" data-close-details aria-label="Close item details">×</button>
+    <div class="details-content" id="details-content"></div>
+  </section>
+
+  <div class="modal-backdrop" id="request-backdrop" hidden></div>
+  <section class="request-modal" id="request-modal" role="dialog" aria-modal="true" aria-labelledby="request-title" aria-hidden="true">
+    <button class="icon-button modal-close" type="button" data-close-request aria-label="Close rental request">×</button>
+    <div class="request-heading">
+      <p class="eyebrow eyebrow-dark">ALMOST THERE</p>
+      <h2 id="request-title">Send your rental request.</h2>
+      <p>Share a few details and our team will be in touch to confirm availability and pricing.</p>
+    </div>
+    <form id="request-form">
+      <div class="request-summary" id="request-summary"></div>
+      <div class="form-grid">
+        <label>Full name<input name="name" type="text" maxlength="150" autocomplete="name" required></label>
+        <label>Email address<input name="email" type="email" maxlength="190" autocomplete="email" required></label>
+        <label>Phone number<input name="phone" type="tel" maxlength="30" autocomplete="tel" required></label>
+        <label>Start date<input name="start_date" id="request-start" type="date" required></label>
+        <label>End date<input name="end_date" id="request-end" type="date" required></label>
+      </div>
+      <p class="duration-summary" id="duration-summary" aria-live="polite">Choose dates to see the rental duration.</p>
+      <label class="requirements-label">Additional requirements <span>Optional</span><textarea name="requirements" rows="3" maxlength="2000" placeholder="Tell us about delivery, intended use or anything else we should know."></textarea></label>
+      <p class="request-message" id="request-message" role="status"></p>
+      <button class="button button-green button-full" id="submit-request" type="submit">Send rental request <span aria-hidden="true">→</span></button>
+      <p class="privacy-note">Submitting a request does not confirm a booking or require payment.</p>
+    </form>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

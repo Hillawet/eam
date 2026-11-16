@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asset management | Croco Plant</title>
+  <link rel="stylesheet" href="css/styles.css?v=20261103-branding-3">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+      <div class="brand-mark" style="margin: 0;"><img src="images/logo-cropped.jpeg" alt=""></div>
+      <span style="font-weight: 700; font-size: 14px; letter-spacing: 1px; color: var(--orange, #f7a54f);">CROCO PLANT</span>
+    </div>
+    <nav>
+      <a href="dashboard.html">Overview</a>
+      <a href="assets.html" class="active">Asset Management</a>
+      <a href="bookings.html">Bookings</a>
+      <a href="rentals.html">Rentals</a>
+      <a href="maintenance.html">Maintenance</a>
+    </nav>
+    <div style="margin-top: 48px; border-top: 1px solid var(--border-glass); padding-top: 16px;">
+      <a href="login.html" id="logoutBtn" style="color: #ff6b6b;">Sign out</a>
+    </div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar">
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="appSidebar" aria-expanded="false">Menu</button>
+      <div class="breadcrumb">Workspace <span>/</span> <b>Asset management</b></div>
+      <div class="top-actions">
+        <div class="user-chip"></div>
+      </div>
+    </header>
+
+    <section class="page-content">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">INVENTORY</p>
+          <h1>Asset management</h1>
+          <p class="subtext">Register equipment, monitor availability and keep asset records up to date.</p>
+        </div>
+        <button class="btn btn-primary" id="addAssetBtn" data-modal-target="assetModal">Add new asset</button>
+      </div>
+
+      <div class="stats-grid" id="assetStats"></div>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Asset register</h2>
+            <p>Search and filter registered equipment.</p>
+          </div>
+          <button class="btn btn-secondary" type="button" onclick="window.print()">Export / print</button>
+        </div>
+        
+        <div class="table-tools">
+          <input class="search-input" id="assetSearch" type="search" aria-label="Search assets" placeholder="Search by asset, tag or category">
+          <select id="assetStatusFilter" aria-label="Filter assets by status">
+            <option value="">All statuses</option>
+            <option value="available">Available</option>
+            <option value="rented">Rented</option>
+            <option value="maintenance">Maintenance</option>
+            <option value="retired">Retired</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table id="assetTable">
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Tag</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Daily Rate</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <span id="assetCount" aria-live="polite">Loading assets...</span>
+          <span class="table-hint">Use search and status filters to narrow results.</span>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<!-- Add Asset Modal -->
+<div class="modal-backdrop" id="assetModal">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="assetModalTitle">
+    <div class="modal-heading">
+      <div><h2 id="assetModalTitle">Add new asset</h2><p>Enter the equipment details below.</p></div>
+      <button class="close-modal" aria-label="Close">×</button>
+    </div>
+    <form id="assetForm" class="modal-form">
+      <label>Asset name<input name="name" required placeholder="e.g. Hydraulic Excavator"></label>
+      <div class="form-grid">
+        <label>Asset Tag<input name="asset_tag" required placeholder="e.g. HE-0003"></label>
+        <label>Category ID<input name="category_id" type="number" min="1" required placeholder="e.g. 1"></label>
+        <label>Location ID<input name="location_id" type="number" min="1" required placeholder="e.g. 1"></label>
+        <label>Daily Rate (USD)<input name="daily_rate" type="number" min="0" step="0.01" required placeholder="0.00"></label>
+        <label>Condition<select name="condition">
+          <option value="good" selected>Good</option>
+          <option value="fair">Fair</option>
+          <option value="poor">Poor</option>
+          <option value="damaged">Damaged</option>
+        </select></label>
+        <label>Status<select name="status">
+          <option value="available" selected>Available</option>
+          <option value="maintenance">Maintenance</option>
+        </select></label>
+      </div>
+      <p id="assetFormMessage" class="form-message" aria-live="polite"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary close-modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save asset</button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<!-- View Asset Details Modal -->
+<div class="modal-backdrop" id="viewAssetModal">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="viewAssetTitle">
+    <div class="modal-heading">
+      <div><h2 id="viewAssetTitle">Asset details</h2><p>Complete equipment specifications.</p></div>
+      <button class="close-modal" aria-label="Close">×</button>
+    </div>
+    <div id="assetDetailsContent" style="display: flex; flex-direction: column; gap: 12px; font-size: 13px; color: var(--text-main);">
+      <!-- Populated dynamically -->
+    </div>
+    <div id="catalogueDetailsEditor" hidden style="margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-glass);">
+      <h3 style="margin: 0 0 12px;">Public catalogue listing</h3>
+      <form id="catalogueDetailsForm" class="modal-form">
+        <input type="hidden" name="asset_id">
+        <label>Description<textarea name="description" rows="3" maxlength="2000" placeholder="Describe this item for potential renters."></textarea></label>
+        <label>Photo path or HTTPS URL<input name="image_url" maxlength="500" placeholder="e.g. excavator.jpg"></label>
+        <label>Specifications (JSON)<textarea name="specifications" rows="3" placeholder='{"Capacity":"5 tonnes","Power":"120 hp"}'></textarea></label>
+        <label>Rental terms<textarea name="rental_terms" rows="2" maxlength="2000" placeholder="Optional rental conditions."></textarea></label>
+        <label style="display: flex; align-items: center; gap: 8px;"><input name="is_public" type="checkbox" checked style="width: auto;">Show this item in the public rental catalogue</label>
+        <p id="catalogueDetailsMessage" class="form-message" aria-live="polite"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelCatalogueEdit">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save catalogue listing</button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-actions" style="margin-top: 24px;">
+      <button type="button" class="btn btn-secondary close-modal">Close</button>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/app.js?v=20261103-branding-3"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initAssetsPage();
+
+    document.getElementById('addAssetBtn').addEventListener('click', () => {
+      document.getElementById('assetModal').classList.add('open');
+    });
+
+    document.querySelectorAll('.close-modal').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('assetModal').classList.remove('open');
+        document.getElementById('viewAssetModal').classList.remove('open');
+      });
+    });
+    
+    document.getElementById('assetForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const msgEl = document.getElementById('assetFormMessage');
+      if (msgEl) msgEl.textContent = '';
+      setSubmitState(form, true, 'Saving asset...');
+      const formData = new FormData(e.currentTarget);
+      const payload = {
+        name: formData.get('name'),
+        asset_tag: formData.get('asset_tag'),
+        category_id: parseInt(formData.get('category_id')),
+        location_id: parseInt(formData.get('location_id')),
+        daily_rate: parseFloat(formData.get('daily_rate')),
+        condition: formData.get('condition'),
+        status: formData.get('status')
+      };
+
+      try {
+        const response = await fetch('api/index.php?resource=assets', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const res = await response.json();
+        if (res.success) {
+          document.getElementById('assetModal').classList.remove('open');
+          form.reset();
+          if (typeof notify === 'function') notify('Asset successfully registered.');
+          initAssetsPage();
+        } else if (msgEl) {
+          msgEl.textContent = res.message || 'Unable to save this asset.';
+        }
+      } catch (err) {
+        console.error('Asset creation error:', err);
+        if (msgEl) msgEl.textContent = 'Unable to save this asset. Check your connection and try again.';
+      } finally {
+        setSubmitState(form, false);
+      }
+    });
+
+    document.getElementById('cancelCatalogueEdit').addEventListener('click', () => {
+      document.getElementById('catalogueDetailsEditor').hidden = true;
+    });
+
+    document.getElementById('catalogueDetailsForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const message = document.getElementById('catalogueDetailsMessage');
+      const fields = new FormData(form);
+      let specifications = null;
+      try {
+        const value = String(fields.get('specifications') || '').trim();
+        if (value) {
+          specifications = JSON.parse(value);
+          if (!specifications || typeof specifications !== 'object') throw new Error('Specifications must be a JSON object or array.');
+        }
+      } catch (error) {
+        message.textContent = error.message || 'Specifications must be valid JSON.';
+        return;
+      }
+      message.textContent = '';
+      setSubmitState(form, true, 'Saving listing...');
+      try {
+        const response = await fetch(`api/index.php?resource=assets&id=${encodeURIComponent(fields.get('asset_id'))}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            description: fields.get('description'),
+            image_url: fields.get('image_url'),
+            specifications,
+            rental_terms: fields.get('rental_terms'),
+            is_public: fields.get('is_public') === 'on'
+          })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) throw new Error(result.message || 'Catalogue listing could not be saved.');
+        document.getElementById('catalogueDetailsEditor').hidden = true;
+        if (typeof notify === 'function') notify('Public catalogue listing saved.');
+        initAssetsPage();
+      } catch (error) {
+        console.error('Catalogue listing save failed:', error);
+        message.textContent = error.message || 'Catalogue listing could not be saved.';
+      } finally {
+        setSubmitState(form, false);
+      }
+    });
+  });
+</script>
+</body>
+</html>

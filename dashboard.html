@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview | Croco Plant EAM</title>
+  <link rel="stylesheet" href="css/styles.css?v=20261103-branding-3">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="dashboard-brand">
+        <div class="brand-mark"><img src="images/logo-cropped.jpeg" alt=""></div>
+        <span>CROCO PLANT</span>
+      </div>
+      <nav>
+        <a href="dashboard.html" class="active">Overview</a>
+        <a href="assets.html">Asset Management</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="rentals.html">Rentals</a>
+        <a href="maintenance.html">Maintenance</a>
+      </nav>
+      <div class="dashboard-sidebar-footer">
+        <a href="login.html" id="logoutBtn">Sign out</a>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar dashboard-topbar">
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="appSidebar" aria-expanded="false">Menu</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b>Overview</b></div>
+        <div class="top-actions">
+          <span class="dashboard-date" id="dashboardDate"></span>
+          <div class="user-chip"></div>
+        </div>
+      </header>
+
+      <section class="page-content dashboard-content">
+        <div class="dashboard-heading">
+          <div>
+            <p class="eyebrow">OPERATIONS OVERVIEW</p>
+            <h1 id="welcomeGreeting">Good day</h1>
+            <p class="dashboard-subtitle">A clear view of your fleet, bookings and equipment activity.</p>
+          </div>
+          <div class="dashboard-heading-actions">
+            <button class="dashboard-action dashboard-refresh" type="button" id="dashboardRefresh">Refresh data</button>
+            <a class="dashboard-action" href="assets.html" data-dashboard-module="assets">View asset register</a>
+          </div>
+        </div>
+        <div class="dashboard-feedback" id="dashboardFeedback" hidden>
+          <p id="dashboardMessage" role="status"></p>
+          <a class="dashboard-retry" id="dashboardSignIn" href="login.html" hidden>Sign in</a>
+          <button class="dashboard-retry" type="button" id="dashboardRetry">Try again</button>
+        </div>
+
+        <div class="stats-grid dashboard-stats">
+          <article class="stat-card dashboard-stat-card" data-dashboard-module="assets">
+            <div class="dashboard-stat-top"><span>Total assets</span><span class="stat-marker marker-orange"></span></div>
+            <div class="stat-value" id="statTotalAssets">—</div>
+            <span class="stat-description">Registered equipment</span>
+          </article>
+          <article class="stat-card dashboard-stat-card" data-dashboard-module="assets">
+            <div class="dashboard-stat-top"><span>Available</span><span class="stat-marker marker-green"></span></div>
+            <div class="stat-value success-text" id="statAvailable">—</div>
+            <span class="stat-description">Ready for deployment</span>
+          </article>
+          <article class="stat-card dashboard-stat-card" data-dashboard-module="rentals">
+            <div class="dashboard-stat-top"><span>Active rentals</span><span class="stat-marker marker-blue"></span></div>
+            <div class="stat-value info-text" id="statRentals">—</div>
+            <span class="stat-description">Currently out on hire</span>
+          </article>
+          <article class="stat-card dashboard-stat-card" data-dashboard-module="maintenance">
+            <div class="dashboard-stat-top"><span>In maintenance</span><span class="stat-marker marker-red"></span></div>
+            <div class="stat-value danger-text" id="statMaintenance">—</div>
+            <span class="stat-description">Open work orders</span>
+          </article>
+        </div>
+
+        <div class="dashboard-chart-grid">
+          <section class="panel dashboard-chart-panel" data-dashboard-module="assets">
+            <div class="panel-heading">
+              <div>
+                <h2>Fleet availability</h2>
+                <p>How your registered assets are currently distributed.</p>
+              </div>
+              <a class="panel-link" href="assets.html">Asset register</a>
+            </div>
+            <div class="availability-chart-layout">
+              <div id="assetStatusChart" class="asset-donut" role="img" aria-label="Asset availability chart">
+                <div class="asset-donut-center">
+                  <strong id="assetChartTotal">—</strong>
+                  <span>Total assets</span>
+                </div>
+              </div>
+              <ul id="assetStatusLegend" class="chart-legend" aria-label="Asset status breakdown">
+                <li class="chart-empty">Loading fleet data...</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="panel dashboard-chart-panel" data-dashboard-modules="bookings,rentals">
+            <div class="panel-heading">
+              <div>
+                <h2>Weekly activity</h2>
+                <p>Bookings and rentals created over the last 7 days.</p>
+              </div>
+            </div>
+            <div id="weeklyActivityChart" class="weekly-chart" role="img" aria-label="Weekly bookings and rentals chart">
+              <p class="chart-empty">Loading activity...</p>
+            </div>
+            <div class="weekly-chart-legend">
+              <span data-dashboard-module="bookings"><i class="legend-swatch swatch-orange"></i>Bookings</span>
+              <span data-dashboard-module="rentals"><i class="legend-swatch swatch-green"></i>Rentals</span>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel dashboard-table-panel" data-dashboard-module="bookings">
+          <div class="panel-heading">
+            <div>
+              <h2>Recent bookings</h2>
+              <p>Latest requests across your equipment fleet.</p>
+            </div>
+            <a class="panel-link" href="bookings.html">View all bookings</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Asset</th><th>Requester</th><th>Period</th><th>Status</th></tr>
+              </thead>
+              <tbody id="recentBookingsBody">
+                <tr><td colspan="4" class="table-message">Loading bookings...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel dashboard-table-panel" data-dashboard-module="rentals">
+          <div class="panel-heading">
+            <div>
+              <h2>Recent rentals</h2>
+              <p>Latest customer equipment agreements.</p>
+            </div>
+            <a class="panel-link" href="rentals.html">View all rentals</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Contract</th><th>Customer</th><th>Asset</th><th>Period</th><th>Total charge</th><th>Status</th></tr>
+              </thead>
+              <tbody id="recentRentalsBody">
+                <tr><td colspan="6" class="table-message">Loading rentals...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/app.js?v=20261103-branding-3"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initDashboardPage();
+      document.getElementById('dashboardRefresh')?.addEventListener('click', initDashboardPage);
+      document.getElementById('dashboardRetry')?.addEventListener('click', initDashboardPage);
+      document.getElementById('dashboardSignIn')?.addEventListener('click', () => {
+        localStorage.removeItem('croco_user');
+      });
+    });
+  </script>
+</body>
+</html>
